@@ -497,19 +497,33 @@ loading="lazy">
       </div>
 
     </div>
-<form class="contact-form">
+<form id="contact-form" class="contact-form">
 
-  <input type="text" placeholder="Votre nom" required>
+  <input
+    type="text"
+    id="name"
+    placeholder="Votre nom"
+    required
+  >
 
-  <input type="email" placeholder="Votre email" required>
+  <input
+    type="email"
+    id="email"
+    placeholder="Votre email"
+    required
+  >
 
-  <textarea placeholder="Votre message"></textarea>
+  <textarea
+    id="message"
+    placeholder="Votre message"
+    required
+  ></textarea>
 
   <button type="submit" class="btn">
-
     Envoyer
-
   </button>
+
+  <p id="form-status"></p>
 
 </form>
     
