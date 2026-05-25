@@ -393,13 +393,7 @@ footer{
   cursor:pointer;
 }
 
-@media(max-width:900px){
-
-  .menu-toggle{
-    display:block;
-  }
-
- /* MENU MOBILE PREMIUM */
+/* MENU MOBILE PREMIUM */
 
 .menu-toggle{
   display:none;
