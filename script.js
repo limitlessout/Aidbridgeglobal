@@ -47,62 +47,68 @@ window.addEventListener("scroll", () => {
 
 const form = document.getElementById("contact-form");
 
-form.addEventListener("submit", async (e) => {
+if(form){
 
-  e.preventDefault();
+  form.addEventListener("submit", async (e) => {
 
-  const status = document.getElementById("form-status");
+    e.preventDefault();
 
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const message = document.getElementById("message").value;
+    const status =
+      document.getElementById("form-status");
 
-  status.innerHTML = "Envoi en cours...";
+    const name =
+      document.getElementById("name").value;
 
-  try {
+    const email =
+      document.getElementById("email").value;
 
-    const response = await fetch(
-  "/.netlify/functions/send-email",
-  {
+    const message =
+      document.getElementById("message").value;
 
-    method: "POST",
+    status.innerHTML = "Envoi en cours...";
 
-    headers: {
-      "Content-Type": "application/json"
-    },
+    try {
 
-    body: JSON.stringify({
-      name,
-      email,
-      message
-    })
+      const response = await fetch(
+        "/.netlify/functions/send-email",
+        {
 
-  }
-);
+          method: "POST",
+
+          headers: {
+            "Content-Type": "application/json"
+          },
+
+          body: JSON.stringify({
+            name,
+            email,
+            message
+          })
+
+        }
+      );
+
+      if(response.ok){
+
+        status.innerHTML =
+          "Message envoyé avec succès ✅";
+
+        form.reset();
+
+      } else {
+
+        status.innerHTML =
+          "Erreur lors de l’envoi ❌";
 
       }
 
-    );
-
-    if(response.ok){
+    } catch(error){
 
       status.innerHTML =
-        "Message envoyé avec succès ✅";
-
-      form.reset();
-
-    } else {
-
-      status.innerHTML =
-        "Erreur lors de l’envoi ❌";
+        "Erreur de connexion ❌";
 
     }
 
-  } catch(error){
+  });
 
-    status.innerHTML =
-      "Erreur de connexion ❌";
-
-  }
-
-});
+}
