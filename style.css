@@ -146,7 +146,87 @@ nav a:hover{
   position:relative;
   text-align:center;
 }
+/* HERO VIDEO */
 
+.hero{
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-video{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  top:0;
+  left:0;
+  z-index:-2;
+}
+
+.hero-lights{
+
+  position:absolute;
+
+  width:500px;
+  height:500px;
+
+  background:rgba(212,175,55,0.15);
+
+  border-radius:50%;
+
+  filter:blur(120px);
+
+  animation:heroLight 8s infinite alternate;
+
+  z-index:-1;
+
+}
+
+@keyframes heroLight{
+
+  from{
+    transform:translate(-100px,-50px);
+  }
+
+  to{
+    transform:translate(200px,100px);
+  }
+
+}
+
+/* TEXTE HERO */
+
+.hero-title{
+  animation:fadeUp 1.2s ease;
+}
+
+.hero-subtitle{
+  letter-spacing:4px;
+  color:#d4af37;
+  animation:fadeUp 1.5s ease;
+}
+
+.hero-text{
+  animation:fadeUp 1.8s ease;
+}
+
+.btn{
+  animation:fadeUp 2s ease;
+}
+
+@keyframes fadeUp{
+
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+}
 .overlay{
   position:absolute;
   inset:0;
