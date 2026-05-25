@@ -36,19 +36,35 @@ exports.handler = async (event) => {
             name: data.name
           },
 
-          subject: "Nouveau message depuis le site",
+          subject: "Nouveau message depuis AG-AIDBRIDGE GLOBAL",
 
           htmlContent: `
 
-            <h2>Nouveau message reçu</h2>
+            <div style="font-family:Arial,sans-serif;padding:20px;">
 
-            <p><strong>Nom :</strong> ${data.name}</p>
+              <h2 style="color:#0b1a2b;">
+                Nouveau message reçu
+              </h2>
 
-            <p><strong>Email :</strong> ${data.email}</p>
+              <p>
+                <strong>Nom :</strong>
+                ${data.name}
+              </p>
 
-            <p><strong>Message :</strong></p>
+              <p>
+                <strong>Email :</strong>
+                ${data.email}
+              </p>
 
-            <p>${data.message}</p>
+              <p>
+                <strong>Message :</strong>
+              </p>
+
+              <p>
+                ${data.message}
+              </p>
+
+            </div>
 
           `
 
@@ -63,7 +79,7 @@ exports.handler = async (event) => {
       statusCode: 200,
 
       body: JSON.stringify({
-        message: "Email envoyé"
+        message: "Email envoyé avec succès"
       })
 
     };
