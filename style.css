@@ -466,20 +466,6 @@ footer{
 }
 /* ANIMATION SCROLL */
 
-.section{
-
-  opacity:0;
-  transform:translateY(40px);
-  transition:1s;
-
-}
-
-.section.show{
-
-  opacity:1;
-  transform:translateY(0);
-
-}
 /* STATS */
 
 .stats-grid{
