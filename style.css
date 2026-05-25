@@ -222,3 +222,44 @@ footer{
   }
 
 }
+/* MENU MOBILE */
+
+.menu-toggle{
+  display:none;
+  font-size:2rem;
+  color:white;
+  cursor:pointer;
+}
+
+@media(max-width:900px){
+
+  .menu-toggle{
+    display:block;
+  }
+
+  nav{
+    position:absolute;
+    top:90px;
+    right:0;
+    background:#05101f;
+    width:100%;
+    display:none;
+    flex-direction:column;
+    text-align:center;
+    padding:20px 0;
+  }
+
+  nav.active{
+    display:flex;
+  }
+
+  nav ul{
+    flex-direction:column;
+    gap:20px;
+  }
+
+  nav a{
+    font-size:1.1rem;
+  }
+
+}
