@@ -138,13 +138,23 @@ nav a:hover{
 }
 
 .hero{
-  height:100vh;
-  background:url('assets/5fd55583-764a-4786-9a5a-6eed698a6c3c.jpeg') center/cover no-repeat;
+
+  min-height:100vh;
+
+  background:#05101f;
+
   display:flex;
+
   justify-content:center;
+
   align-items:center;
+
   position:relative;
+
   text-align:center;
+
+  padding:120px 20px;
+
 }
 /* HERO VIDEO */
 
