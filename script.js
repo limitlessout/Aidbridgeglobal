@@ -62,54 +62,23 @@ form.addEventListener("submit", async (e) => {
   try {
 
     const response = await fetch(
-      "https://api.brevo.com/v3/smtp/email",
-      {
+  "/.netlify/functions/send-email",
+  {
 
-        method: "POST",
+    method: "POST",
 
-        headers: {
+    headers: {
+      "Content-Type": "application/json"
+    },
 
-          "Content-Type": "application/json",
+    body: JSON.stringify({
+      name,
+      email,
+      message
+    })
 
-          "api-key": "TON_API_KEY_ICI"
-
-        },
-
-        body: JSON.stringify({
-
-          sender: {
-            name: "AG-AIDBRIDGE GLOBAL",
-            email: "contact@aidbridgeglobal.com"
-          },
-
-          to: [
-            {
-              email: "TON_GMAIL@gmail.com"
-            }
-          ],
-
-          replyTo: {
-            email: email,
-            name: name
-          },
-
-          subject: "Nouveau message depuis AG-AIDBRIDGE GLOBAL",
-
-          htmlContent: `
-
-            <h2>Nouveau message reçu</h2>
-
-            <p><strong>Nom :</strong> ${name}</p>
-
-            <p><strong>Email :</strong> ${email}</p>
-
-            <p><strong>Message :</strong></p>
-
-            <p>${message}</p>
-
-          `
-
-        })
+  }
+);
 
       }
 
