@@ -27,7 +27,7 @@ exports.handler = async (event) => {
 
           to: [
             {
-              email: "TON_GMAIL@gmail.com"
+              email: "limitlessout@gmail.com"
             }
           ],
 
