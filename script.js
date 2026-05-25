@@ -1,8 +1,10 @@
-window.addEventListener("scroll", function(){
+const menuToggle = document.getElementById("menu-toggle");
 
-  const header = document.querySelector("header");
+const navbar = document.getElementById("navbar");
 
-  header.classList.toggle("sticky", window.scrollY > 50);
+menuToggle.addEventListener("click", () => {
+
+  navbar.classList.toggle("active");
 
 });
 
