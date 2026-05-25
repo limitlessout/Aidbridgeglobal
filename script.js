@@ -1,11 +1,8 @@
-const menuToggle = document.getElementById("menu-toggle");
+const menuToggle = document.querySelector(".menu-toggle");
+const navbar = document.querySelector("nav");
 
-const navbar = document.getElementById("navbar");
-
-menuToggle.addEventListener("click", () => {
+menuToggle.onclick = function () {
 
   navbar.classList.toggle("active");
 
-});
-
-console.log("AG-AIDBRIDGE GLOBAL LTD WEBSITE READY");
+};
