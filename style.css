@@ -549,3 +549,37 @@ footer{
   transform:scale(1.1);
 
 }
+/* FORMULAIRE */
+
+.contact-form{
+  margin-top:40px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.contact-form input,
+.contact-form textarea{
+
+  width:100%;
+
+  padding:15px;
+
+  border:none;
+
+  border-radius:8px;
+
+  background:#11284a;
+
+  color:white;
+
+}
+
+.contact-form textarea{
+  height:150px;
+}
+
+.contact-form button{
+  border:none;
+  cursor:pointer;
+}
