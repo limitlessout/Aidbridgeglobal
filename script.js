@@ -1,82 +1,139 @@
+// MENU MOBILE
+
 const menuToggle = document.querySelector(".menu-toggle");
-const navbar = document.querySelector("nav");
-const navLinks = document.querySelectorAll("nav a");
-const header = document.querySelector("header");
-const sections = document.querySelectorAll(".section");
+const nav = document.querySelector("nav");
 
-/* MENU MOBILE */
-
-menuToggle.addEventListener("click", (e) => {
-
-  e.stopPropagation();
-
-  navbar.classList.toggle("active");
-
+menuToggle.addEventListener("click", () => {
+  nav.classList.toggle("active");
 });
 
-/* FERMER MENU APRÈS CLIC */
+// FERMER MENU APRÈS CLIC
 
-navLinks.forEach(link => {
+document.querySelectorAll("nav a").forEach(link => {
 
   link.addEventListener("click", () => {
-
-    navbar.classList.remove("active");
-
+    nav.classList.remove("active");
   });
 
 });
 
-/* FERMER SI CLIC EXTÉRIEUR */
+// FERMER SI CLICK À L’EXTÉRIEUR
 
 document.addEventListener("click", (e) => {
 
   if(
-    !navbar.contains(e.target) &&
+    !nav.contains(e.target) &&
     !menuToggle.contains(e.target)
   ){
-
-    navbar.classList.remove("active");
-
+    nav.classList.remove("active");
   }
 
 });
 
-/* NAVBAR SCROLL */
+// HEADER SCROLL
 
 window.addEventListener("scroll", () => {
 
-  if(window.scrollY > 50){
+  const header = document.querySelector("header");
 
-    header.classList.add("scrolled");
+  header.classList.toggle(
+    "scrolled",
+    window.scrollY > 50
+  );
 
-  }else{
+});
 
-    header.classList.remove("scrolled");
+// FORMULAIRE BREVO
+
+const form = document.getElementById("contact-form");
+
+form.addEventListener("submit", async (e) => {
+
+  e.preventDefault();
+
+  const status = document.getElementById("form-status");
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const message = document.getElementById("message").value;
+
+  status.innerHTML = "Envoi en cours...";
+
+  try {
+
+    const response = await fetch(
+      "https://api.brevo.com/v3/smtp/email",
+      {
+
+        method: "POST",
+
+        headers: {
+
+          "Content-Type": "application/json",
+
+          "api-key": "TON_API_KEY_ICI"
+
+        },
+
+        body: JSON.stringify({
+
+          sender: {
+            name: "AG-AIDBRIDGE GLOBAL",
+            email: "contact@aidbridgeglobal.com"
+          },
+
+          to: [
+            {
+              email: "TON_GMAIL@gmail.com"
+            }
+          ],
+
+          replyTo: {
+            email: email,
+            name: name
+          },
+
+          subject: "Nouveau message depuis AG-AIDBRIDGE GLOBAL",
+
+          htmlContent: `
+
+            <h2>Nouveau message reçu</h2>
+
+            <p><strong>Nom :</strong> ${name}</p>
+
+            <p><strong>Email :</strong> ${email}</p>
+
+            <p><strong>Message :</strong></p>
+
+            <p>${message}</p>
+
+          `
+
+        })
+
+      }
+
+    );
+
+    if(response.ok){
+
+      status.innerHTML =
+        "Message envoyé avec succès ✅";
+
+      form.reset();
+
+    } else {
+
+      status.innerHTML =
+        "Erreur lors de l’envoi ❌";
+
+    }
+
+  } catch(error){
+
+    status.innerHTML =
+      "Erreur de connexion ❌";
 
   }
 
 });
-
-/* ANIMATIONS AU SCROLL */
-
-function revealSections(){
-
-  sections.forEach(section => {
-
-    const sectionTop = section.getBoundingClientRect().top;
-
-    const triggerBottom = window.innerHeight * 0.85;
-
-    if(sectionTop < triggerBottom){
-
-      section.classList.add("show");
-
-    }
-
-  });
-
-}
-
-window.addEventListener("scroll", revealSections);
-
-revealSections();
