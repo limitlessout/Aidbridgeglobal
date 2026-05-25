@@ -3,67 +3,90 @@
 const menuToggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector("nav");
 
-menuToggle.addEventListener("click", () => {
-  nav.classList.toggle("active");
-});
+// OUVERTURE MENU
+
+if (menuToggle && nav) {
+
+  menuToggle.addEventListener("click", () => {
+
+    nav.classList.toggle("active");
+
+  });
+
+}
 
 // FERMER MENU APRÈS CLIC
 
-document.querySelectorAll("nav a").forEach(link => {
+if (nav) {
 
-  link.addEventListener("click", () => {
-    nav.classList.remove("active");
+  document.querySelectorAll("nav a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+      nav.classList.remove("active");
+
+    });
+
   });
 
-});
+}
 
-// FERMER SI CLICK À L’EXTÉRIEUR
+// FERMER MENU SI CLICK EXTÉRIEUR
 
 document.addEventListener("click", (e) => {
 
-  if(
+  if (
+    nav &&
+    menuToggle &&
     !nav.contains(e.target) &&
     !menuToggle.contains(e.target)
-  ){
+  ) {
+
     nav.classList.remove("active");
+
   }
 
 });
 
-// HEADER SCROLL
+// HEADER AU SCROLL
 
 window.addEventListener("scroll", () => {
 
   const header = document.querySelector("header");
 
-  header.classList.toggle(
-    "scrolled",
-    window.scrollY > 50
-  );
+  if (header) {
+
+    if (window.scrollY > 50) {
+
+      header.classList.add("scrolled");
+
+    } else {
+
+      header.classList.remove("scrolled");
+
+    }
+
+  }
 
 });
 
-// FORMULAIRE BREVO
+// FORMULAIRE CONTACT
 
 const form = document.getElementById("contact-form");
 
-if(form){
+if (form) {
 
   form.addEventListener("submit", async (e) => {
 
     e.preventDefault();
 
-    const status =
-      document.getElementById("form-status");
+    const status = document.getElementById("form-status");
 
-    const name =
-      document.getElementById("name").value;
+    const name = document.getElementById("name").value;
 
-    const email =
-      document.getElementById("email").value;
+    const email = document.getElementById("email").value;
 
-    const message =
-      document.getElementById("message").value;
+    const message = document.getElementById("message").value;
 
     status.innerHTML = "Envoi en cours...";
 
@@ -88,7 +111,7 @@ if(form){
         }
       );
 
-      if(response.ok){
+      if (response.ok) {
 
         status.innerHTML =
           "Message envoyé avec succès ✅";
@@ -102,10 +125,12 @@ if(form){
 
       }
 
-    } catch(error){
+    } catch (error) {
 
       status.innerHTML =
         "Erreur de connexion ❌";
+
+      console.error(error);
 
     }
 
