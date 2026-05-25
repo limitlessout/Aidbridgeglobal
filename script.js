@@ -1,8 +1,10 @@
 const menuToggle = document.querySelector(".menu-toggle");
 const navbar = document.querySelector("nav");
 const navLinks = document.querySelectorAll("nav a");
+const header = document.querySelector("header");
+const sections = document.querySelectorAll(".section");
 
-/* OUVERTURE MENU */
+/* MENU MOBILE */
 
 menuToggle.addEventListener("click", (e) => {
 
@@ -12,7 +14,7 @@ menuToggle.addEventListener("click", (e) => {
 
 });
 
-/* FERMETURE APRÈS CLIC */
+/* FERMER MENU APRÈS CLIC */
 
 navLinks.forEach(link => {
 
@@ -24,7 +26,7 @@ navLinks.forEach(link => {
 
 });
 
-/* FERMETURE SI CLIC À L'EXTÉRIEUR */
+/* FERMER SI CLIC EXTÉRIEUR */
 
 document.addEventListener("click", (e) => {
 
@@ -38,3 +40,43 @@ document.addEventListener("click", (e) => {
   }
 
 });
+
+/* NAVBAR SCROLL */
+
+window.addEventListener("scroll", () => {
+
+  if(window.scrollY > 50){
+
+    header.classList.add("scrolled");
+
+  }else{
+
+    header.classList.remove("scrolled");
+
+  }
+
+});
+
+/* ANIMATIONS AU SCROLL */
+
+function revealSections(){
+
+  sections.forEach(section => {
+
+    const sectionTop = section.getBoundingClientRect().top;
+
+    const triggerBottom = window.innerHeight * 0.85;
+
+    if(sectionTop < triggerBottom){
+
+      section.classList.add("show");
+
+    }
+
+  });
+
+}
+
+window.addEventListener("scroll", revealSections);
+
+revealSections();
