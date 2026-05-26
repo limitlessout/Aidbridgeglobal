@@ -500,44 +500,27 @@ footer{
 
 }
 /* =========================
-   PREMIUM ANIMATIONS
+   SAFE PREMIUM ANIMATIONS
 ========================= */
 
-/* SCROLL REVEAL */
+/* SCROLL ANIMATION */
 
 .section{
 
-  opacity:0;
-
-  transform:translateY(60px);
-
-  transition:
-    opacity 1s ease,
-    transform 1s ease;
+  opacity:1;
+  transform:none;
+  transition:all 0.8s ease;
 
 }
 
 .section.show{
 
   opacity:1;
-
-  transform:translateY(0);
-
-}
-
-/* CARTES PREMIUM */
-
-.service-card,
-.contact-box,
-.about-card,
-.feature-box,
-.stat-box{
-
-  transition:
-    transform 0.4s ease,
-    box-shadow 0.4s ease;
+  transform:none;
 
 }
+
+/* PREMIUM HOVER */
 
 .service-card:hover,
 .contact-box:hover,
@@ -545,29 +528,29 @@ footer{
 .feature-box:hover,
 .stat-box:hover{
 
-  transform:translateY(-10px);
+  transform:translateY(-8px);
 
   box-shadow:
-    0 10px 30px rgba(212,175,55,0.2);
+    0 10px 25px rgba(212,175,55,0.15);
 
 }
 
-/* WHATSAPP PULSE */
+/* WHATSAPP */
 
 .whatsapp-float{
 
-  animation:pulseWhatsapp 2s infinite;
+  animation:whatsappPulse 2s infinite;
 
 }
 
-@keyframes pulseWhatsapp{
+@keyframes whatsappPulse{
 
   0%{
     transform:scale(1);
   }
 
   50%{
-    transform:scale(1.08);
+    transform:scale(1.05);
   }
 
   100%{
@@ -576,74 +559,10 @@ footer{
 
 }
 
-/* LOGO FLOAT */
+/* HERO LIGHT */
 
-.logo img{
+.hero-lights{
 
-  animation:logoFloat 4s ease-in-out infinite;
-
-}
-
-@keyframes logoFloat{
-
-  0%{
-    transform:translateY(0);
-  }
-
-  50%{
-    transform:translateY(-5px);
-  }
-
-  100%{
-    transform:translateY(0);
-  }
-
-}
-
-/* HERO LIGHT EFFECT */
-
-.hero::before{
-
-  content:"";
-
-  position:absolute;
-
-  width:500px;
-  height:500px;
-
-  background:rgba(212,175,55,0.08);
-
-  border-radius:50%;
-
-  filter:blur(120px);
-
-  top:-150px;
-  left:-100px;
-
-  animation:heroGlow 8s infinite alternate;
-
-  z-index:0;
-
-}
-
-@keyframes heroGlow{
-
-  from{
-    transform:translate(0,0);
-  }
-
-  to{
-    transform:translate(120px,80px);
-  }
-
-}
-
-/* HERO CONTENT */
-
-.hero-content{
-
-  position:relative;
-
-  z-index:5;
+  animation:heroLight 8s infinite alternate;
 
 }
