@@ -1,14 +1,10 @@
-const fetch = require("node-fetch");
-
 exports.handler = async (event) => {
 
   const data = JSON.parse(event.body);
 
   try {
 
-    // =========================
     // EMAIL VERS TOI
-    // =========================
 
     await fetch(
       "https://api.brevo.com/v3/smtp/email",
@@ -42,27 +38,18 @@ exports.handler = async (event) => {
             name: data.name
           },
 
-          subject:
-            "Nouveau message depuis AG-AIDBRIDGE GLOBAL",
+          subject: "Nouveau message depuis AG-AIDBRIDGE GLOBAL",
 
           htmlContent: `
 
-            <div style="
-              font-family:Arial,sans-serif;
-              padding:30px;
-              background:#07152d;
-              color:white;
-            ">
+            <div style="font-family:Arial,sans-serif;padding:20px;">
 
               <img
                 src="https://aidbridgeglobal.com/assets/5fd55583-764a-4786-9a5a-6eed698a6c3c.jpeg"
-                style="
-                  width:180px;
-                  margin-bottom:20px;
-                "
+                style="width:180px;margin-bottom:20px;"
               >
 
-              <h2 style="color:#d4af37;">
+              <h2 style="color:#0b1a2b;">
                 Nouveau message reçu
               </h2>
 
@@ -94,9 +81,7 @@ exports.handler = async (event) => {
 
     );
 
-    // =========================
-    // AUTO-RÉPONSE CLIENT
-    // =========================
+    // AUTO RÉPONSE CLIENT
 
     await fetch(
       "https://api.brevo.com/v3/smtp/email",
@@ -125,8 +110,7 @@ exports.handler = async (event) => {
             }
           ],
 
-          subject:
-            "Nous avons bien reçu votre message",
+          subject: "Nous avons bien reçu votre message",
 
           htmlContent: `
 
@@ -142,26 +126,22 @@ exports.handler = async (event) => {
                 src="https://aidbridgeglobal.com/assets/5fd55583-764a-4786-9a5a-6eed698a6c3c.jpeg"
                 style="
                   width:180px;
-                  margin-bottom:25px;
+                  margin-bottom:20px;
                 "
               >
 
-              <h1 style="
-                color:#d4af37;
-                margin-bottom:20px;
-              ">
+              <h1 style="color:#d4af37;">
                 Merci ${data.name}
               </h1>
 
               <p style="
-                font-size:16px;
                 line-height:1.8;
-                max-width:700px;
-                margin:auto;
+                margin-top:20px;
               ">
 
-                Nous avons bien reçu votre message
-                et notre équipe vous répondra
+                Nous avons bien reçu votre message.
+
+                Notre équipe vous répondra
                 dans les meilleurs délais.
 
               </p>
@@ -195,12 +175,12 @@ exports.handler = async (event) => {
       statusCode: 200,
 
       body: JSON.stringify({
-        message: "Emails envoyés"
+        message: "Emails envoyés avec succès"
       })
 
     };
 
-  } catch (error) {
+  } catch(error){
 
     console.log(error);
 
