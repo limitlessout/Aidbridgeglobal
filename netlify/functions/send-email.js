@@ -1,101 +1,178 @@
-exports.handler = async (event) => {
+// =========================
+// MENU MOBILE
+// =========================
 
-  const data = JSON.parse(event.body);
+const menuToggle = document.querySelector(".menu-toggle");
+const nav = document.querySelector("nav");
 
-  try {
+if(menuToggle && nav){
 
-    const response = await fetch(
-      "https://api.brevo.com/v3/smtp/email",
-      {
+  // OUVRIR / FERMER MENU
 
-        method: "POST",
+  menuToggle.addEventListener("click", (e) => {
 
-        headers: {
+    e.stopPropagation();
 
-          "Content-Type": "application/json",
+    nav.classList.toggle("active");
 
-          "api-key": process.env.BREVO_API_KEY
+  });
 
-        },
+  // FERMER APRÈS CLIC SUR UN LIEN
 
-        body: JSON.stringify({
+  document.querySelectorAll("nav a").forEach(link => {
 
-          sender: {
-            name: "AG-AIDBRIDGE GLOBAL",
-            email: "contact@aidbridgeglobal.com"
-          },
+    link.addEventListener("click", () => {
 
-          to: [
-            {
-              email: "limitlessout@gmail.com"
-            }
-          ],
+      nav.classList.remove("active");
 
-          replyTo: {
-            email: data.email,
-            name: data.name
-          },
+    });
 
-          subject: "Nouveau message depuis AG-AIDBRIDGE GLOBAL",
+  });
 
-          htmlContent: `
+  // FERMER SI CLICK EXTÉRIEUR
 
-            <div style="font-family:Arial,sans-serif;padding:20px;">
+  document.addEventListener("click", (e) => {
 
-              <h2 style="color:#0b1a2b;">
-                Nouveau message reçu
-              </h2>
+    if(
+      !nav.contains(e.target) &&
+      !menuToggle.contains(e.target)
+    ){
 
-              <p>
-                <strong>Nom :</strong>
-                ${data.name}
-              </p>
+      nav.classList.remove("active");
 
-              <p>
-                <strong>Email :</strong>
-                ${data.email}
-              </p>
+    }
 
-              <p>
-                <strong>Message :</strong>
-              </p>
+  });
 
-              <p>
-                ${data.message}
-              </p>
+}
 
-            </div>
+// =========================
+// HEADER AU SCROLL
+// =========================
 
-          `
+const header = document.querySelector("header");
 
-        })
+window.addEventListener("scroll", () => {
 
-      }
+  if(window.scrollY > 50){
 
-    );
+    header.classList.add("scrolled");
 
-    return {
+  }else{
 
-      statusCode: 200,
-
-      body: JSON.stringify({
-        message: "Email envoyé avec succès"
-      })
-
-    };
-
-  } catch(error){
-
-    return {
-
-      statusCode: 500,
-
-      body: JSON.stringify({
-        error: error.message
-      })
-
-    };
+    header.classList.remove("scrolled");
 
   }
 
+});
+
+// =========================
+// ANIMATION AU SCROLL
+// =========================
+
+const sections = document.querySelectorAll(".section");
+
+const revealSections = () => {
+
+  sections.forEach(section => {
+
+    const sectionTop =
+      section.getBoundingClientRect().top;
+
+    const trigger =
+      window.innerHeight - 120;
+
+    if(sectionTop < trigger){
+
+      section.classList.add("show");
+
+    }
+
+  });
+
 };
+
+window.addEventListener(
+  "scroll",
+  revealSections
+);
+
+window.addEventListener(
+  "load",
+  revealSections
+);
+
+// =========================
+// FORMULAIRE CONTACT
+// =========================
+
+const form = document.getElementById("contact-form");
+
+if(form){
+
+  form.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const status =
+      document.getElementById("form-status");
+
+    const name =
+      document.getElementById("name").value;
+
+    const email =
+      document.getElementById("email").value;
+
+    const message =
+      document.getElementById("message").value;
+
+    status.innerHTML =
+      "Envoi en cours...";
+
+    try{
+
+      const response = await fetch(
+        "/.netlify/functions/send-email",
+        {
+
+          method:"POST",
+
+          headers:{
+            "Content-Type":"application/json"
+          },
+
+          body:JSON.stringify({
+            name,
+            email,
+            message
+          })
+
+        }
+      );
+
+      if(response.ok){
+
+        status.innerHTML =
+          "Message envoyé avec succès ✅";
+
+        form.reset();
+
+      }else{
+
+        status.innerHTML =
+          "Erreur lors de l’envoi ❌";
+
+      }
+
+    }catch(error){
+
+      console.error(error);
+
+      status.innerHTML =
+        "Erreur de connexion ❌";
+
+    }
+
+  });
+
+}
