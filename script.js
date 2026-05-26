@@ -176,3 +176,35 @@ if(form){
   });
 
 }
+// =========================
+// SCROLL REVEAL
+// =========================
+
+const sections = document.querySelectorAll(".section");
+
+const revealSections = () => {
+
+  sections.forEach(section => {
+
+    const top =
+      section.getBoundingClientRect().top;
+
+    const trigger =
+      window.innerHeight - 100;
+
+    if(top < trigger){
+
+      section.classList.add("show");
+
+    }
+
+  });
+
+};
+
+window.addEventListener(
+  "scroll",
+  revealSections
+);
+
+revealSections();
