@@ -1,178 +1,219 @@
-// =========================
-// MENU MOBILE
-// =========================
+const fetch = require("node-fetch");
 
-const menuToggle = document.querySelector(".menu-toggle");
-const nav = document.querySelector("nav");
+exports.handler = async (event) => {
 
-if(menuToggle && nav){
+  const data = JSON.parse(event.body);
 
-  // OUVRIR / FERMER MENU
+  try {
 
-  menuToggle.addEventListener("click", (e) => {
+    // =========================
+    // EMAIL VERS TOI
+    // =========================
 
-    e.stopPropagation();
+    await fetch(
+      "https://api.brevo.com/v3/smtp/email",
+      {
 
-    nav.classList.toggle("active");
+        method: "POST",
 
-  });
+        headers: {
 
-  // FERMER APRÈS CLIC SUR UN LIEN
+          "Content-Type": "application/json",
 
-  document.querySelectorAll("nav a").forEach(link => {
+          "api-key": process.env.BREVO_API_KEY
 
-    link.addEventListener("click", () => {
+        },
 
-      nav.classList.remove("active");
+        body: JSON.stringify({
 
-    });
-
-  });
-
-  // FERMER SI CLICK EXTÉRIEUR
-
-  document.addEventListener("click", (e) => {
-
-    if(
-      !nav.contains(e.target) &&
-      !menuToggle.contains(e.target)
-    ){
-
-      nav.classList.remove("active");
-
-    }
-
-  });
-
-}
-
-// =========================
-// HEADER AU SCROLL
-// =========================
-
-const header = document.querySelector("header");
-
-window.addEventListener("scroll", () => {
-
-  if(window.scrollY > 50){
-
-    header.classList.add("scrolled");
-
-  }else{
-
-    header.classList.remove("scrolled");
-
-  }
-
-});
-
-// =========================
-// ANIMATION AU SCROLL
-// =========================
-
-const sections = document.querySelectorAll(".section");
-
-const revealSections = () => {
-
-  sections.forEach(section => {
-
-    const sectionTop =
-      section.getBoundingClientRect().top;
-
-    const trigger =
-      window.innerHeight - 120;
-
-    if(sectionTop < trigger){
-
-      section.classList.add("show");
-
-    }
-
-  });
-
-};
-
-window.addEventListener(
-  "scroll",
-  revealSections
-);
-
-window.addEventListener(
-  "load",
-  revealSections
-);
-
-// =========================
-// FORMULAIRE CONTACT
-// =========================
-
-const form = document.getElementById("contact-form");
-
-if(form){
-
-  form.addEventListener("submit", async (e) => {
-
-    e.preventDefault();
-
-    const status =
-      document.getElementById("form-status");
-
-    const name =
-      document.getElementById("name").value;
-
-    const email =
-      document.getElementById("email").value;
-
-    const message =
-      document.getElementById("message").value;
-
-    status.innerHTML =
-      "Envoi en cours...";
-
-    try{
-
-      const response = await fetch(
-        "/.netlify/functions/send-email",
-        {
-
-          method:"POST",
-
-          headers:{
-            "Content-Type":"application/json"
+          sender: {
+            name: "AG-AIDBRIDGE GLOBAL",
+            email: "contact@aidbridgeglobal.com"
           },
 
-          body:JSON.stringify({
-            name,
-            email,
-            message
-          })
+          to: [
+            {
+              email: "limitlessout@gmail.com"
+            }
+          ],
 
-        }
-      );
+          replyTo: {
+            email: data.email,
+            name: data.name
+          },
 
-      if(response.ok){
+          subject:
+            "Nouveau message depuis AG-AIDBRIDGE GLOBAL",
 
-        status.innerHTML =
-          "Message envoyé avec succès ✅";
+          htmlContent: `
 
-        form.reset();
+            <div style="
+              font-family:Arial,sans-serif;
+              padding:30px;
+              background:#07152d;
+              color:white;
+            ">
 
-      }else{
+              <img
+                src="https://aidbridgeglobal.com/assets/5fd55583-764a-4786-9a5a-6eed698a6c3c.jpeg"
+                style="
+                  width:180px;
+                  margin-bottom:20px;
+                "
+              >
 
-        status.innerHTML =
-          "Erreur lors de l’envoi ❌";
+              <h2 style="color:#d4af37;">
+                Nouveau message reçu
+              </h2>
+
+              <p>
+                <strong>Nom :</strong>
+                ${data.name}
+              </p>
+
+              <p>
+                <strong>Email :</strong>
+                ${data.email}
+              </p>
+
+              <p>
+                <strong>Message :</strong>
+              </p>
+
+              <p>
+                ${data.message}
+              </p>
+
+            </div>
+
+          `
+
+        })
 
       }
 
-    }catch(error){
+    );
 
-      console.error(error);
+    // =========================
+    // AUTO-RÉPONSE CLIENT
+    // =========================
 
-      status.innerHTML =
-        "Erreur de connexion ❌";
+    await fetch(
+      "https://api.brevo.com/v3/smtp/email",
+      {
 
-    }
+        method: "POST",
 
-  });
+        headers: {
 
-}
+          "Content-Type": "application/json",
+
+          "api-key": process.env.BREVO_API_KEY
+
+        },
+
+        body: JSON.stringify({
+
+          sender: {
+            name: "AG-AIDBRIDGE GLOBAL",
+            email: "contact@aidbridgeglobal.com"
+          },
+
+          to: [
+            {
+              email: data.email
+            }
+          ],
+
+          subject:
+            "Nous avons bien reçu votre message",
+
+          htmlContent: `
+
+            <div style="
+              font-family:Arial,sans-serif;
+              background:#07152d;
+              color:white;
+              padding:40px;
+              text-align:center;
+            ">
+
+              <img
+                src="https://aidbridgeglobal.com/assets/5fd55583-764a-4786-9a5a-6eed698a6c3c.jpeg"
+                style="
+                  width:180px;
+                  margin-bottom:25px;
+                "
+              >
+
+              <h1 style="
+                color:#d4af37;
+                margin-bottom:20px;
+              ">
+                Merci ${data.name}
+              </h1>
+
+              <p style="
+                font-size:16px;
+                line-height:1.8;
+                max-width:700px;
+                margin:auto;
+              ">
+
+                Nous avons bien reçu votre message
+                et notre équipe vous répondra
+                dans les meilleurs délais.
+
+              </p>
+
+              <p style="
+                margin-top:30px;
+                color:#d4af37;
+                font-weight:bold;
+              ">
+
+                AG-AIDBRIDGE GLOBAL LTD
+
+              </p>
+
+              <p>
+                Bridging Opportunities. Building Futures.
+              </p>
+
+            </div>
+
+          `
+
+        })
+
+      }
+
+    );
+
+    return {
+
+      statusCode: 200,
+
+      body: JSON.stringify({
+        message: "Emails envoyés"
+      })
+
+    };
+
+  } catch (error) {
+
+    console.log(error);
+
+    return {
+
+      statusCode: 500,
+
+      body: JSON.stringify({
+        error: error.message
+      })
+
+    };
+
+  }
+
+};
