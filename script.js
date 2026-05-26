@@ -1,23 +1,23 @@
+// =========================
 // MENU MOBILE
+// =========================
 
 const menuToggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector("nav");
 
-// OUVERTURE MENU
+if(menuToggle && nav){
 
-if (menuToggle && nav) {
+  // OUVRIR / FERMER MENU
 
-  menuToggle.addEventListener("click", () => {
+  menuToggle.addEventListener("click", (e) => {
+
+    e.stopPropagation();
 
     nav.classList.toggle("active");
 
   });
 
-}
-
-// FERMER MENU APRÈS CLIC
-
-if (nav) {
+  // FERMER APRÈS CLIC SUR UN LIEN
 
   document.querySelectorAll("nav a").forEach(link => {
 
@@ -29,115 +29,46 @@ if (nav) {
 
   });
 
-}
+  // FERMER SI CLICK EXTÉRIEUR
 
-// FERMER MENU SI CLICK EXTÉRIEUR
+  document.addEventListener("click", (e) => {
 
-document.addEventListener("click", (e) => {
+    if(
+      !nav.contains(e.target) &&
+      !menuToggle.contains(e.target)
+    ){
 
-  if (
-    nav &&
-    menuToggle &&
-    !nav.contains(e.target) &&
-    !menuToggle.contains(e.target)
-  ) {
-
-    nav.classList.remove("active");
-
-  }
-
-});
-
-// HEADER AU SCROLL
-
-window.addEventListener("scroll", () => {
-
-  const header = document.querySelector("header");
-
-  if (header) {
-
-    if (window.scrollY > 50) {
-
-      header.classList.add("scrolled");
-
-    } else {
-
-      header.classList.remove("scrolled");
-
-    }
-
-  }
-
-});
-
-// FORMULAIRE CONTACT
-
-const form = document.getElementById("contact-form");
-
-if (form) {
-
-  form.addEventListener("submit", async (e) => {
-
-    e.preventDefault();
-
-    const status = document.getElementById("form-status");
-
-    const name = document.getElementById("name").value;
-
-    const email = document.getElementById("email").value;
-
-    const message = document.getElementById("message").value;
-
-    status.innerHTML = "Envoi en cours...";
-
-    try {
-
-      const response = await fetch(
-        "/.netlify/functions/send-email",
-        {
-
-          method: "POST",
-
-          headers: {
-            "Content-Type": "application/json"
-          },
-
-          body: JSON.stringify({
-            name,
-            email,
-            message
-          })
-
-        }
-      );
-
-      if (response.ok) {
-
-        status.innerHTML =
-          "Message envoyé avec succès ✅";
-
-        form.reset();
-
-      } else {
-
-        status.innerHTML =
-          "Erreur lors de l’envoi ❌";
-
-      }
-
-    } catch (error) {
-
-      status.innerHTML =
-        "Erreur de connexion ❌";
-
-      console.error(error);
+      nav.classList.remove("active");
 
     }
 
   });
 
 }
+
+// =========================
+// HEADER AU SCROLL
+// =========================
+
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+
+  if(window.scrollY > 50){
+
+    header.classList.add("scrolled");
+
+  }else{
+
+    header.classList.remove("scrolled");
+
+  }
+
+});
+
+// =========================
 // ANIMATION AU SCROLL
+// =========================
 
 const sections = document.querySelectorAll(".section");
 
@@ -149,7 +80,7 @@ const revealSections = () => {
       section.getBoundingClientRect().top;
 
     const trigger =
-      window.innerHeight - 100;
+      window.innerHeight - 120;
 
     if(sectionTop < trigger){
 
@@ -166,4 +97,82 @@ window.addEventListener(
   revealSections
 );
 
-revealSections();
+window.addEventListener(
+  "load",
+  revealSections
+);
+
+// =========================
+// FORMULAIRE CONTACT
+// =========================
+
+const form = document.getElementById("contact-form");
+
+if(form){
+
+  form.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const status =
+      document.getElementById("form-status");
+
+    const name =
+      document.getElementById("name").value;
+
+    const email =
+      document.getElementById("email").value;
+
+    const message =
+      document.getElementById("message").value;
+
+    status.innerHTML =
+      "Envoi en cours...";
+
+    try{
+
+      const response = await fetch(
+        "/.netlify/functions/send-email",
+        {
+
+          method:"POST",
+
+          headers:{
+            "Content-Type":"application/json"
+          },
+
+          body:JSON.stringify({
+            name,
+            email,
+            message
+          })
+
+        }
+      );
+
+      if(response.ok){
+
+        status.innerHTML =
+          "Message envoyé avec succès ✅";
+
+        form.reset();
+
+      }else{
+
+        status.innerHTML =
+          "Erreur lors de l’envoi ❌";
+
+      }
+
+    }catch(error){
+
+      console.error(error);
+
+      status.innerHTML =
+        "Erreur de connexion ❌";
+
+    }
+
+  });
+
+}
