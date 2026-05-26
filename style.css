@@ -139,21 +139,21 @@ nav a:hover{
 
 .hero{
 
-  min-height:100vh;
+  position:relative;
 
-  background:#05101f;
+  min-height:100vh;
 
   display:flex;
 
-  justify-content:center;
-
   align-items:center;
 
-  position:relative;
+  justify-content:center;
 
   text-align:center;
 
   padding:120px 20px;
+
+  overflow:hidden;
 
 }
 /* HERO VIDEO */
@@ -561,23 +561,12 @@ footer{
   cursor:pointer;
 }
 .hero-background{
-
   position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-
+  inset:0;
   background:
-    linear-gradient(
-      rgba(5,16,31,0.7),
-      rgba(5,16,31,0.8)
-    ),
+    linear-gradient(rgba(5,16,31,0.7), rgba(5,16,31,0.8)),
     url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1920&auto=format&fit=crop');
-
   background-size:cover;
   background-position:center;
-
   z-index:-2;
-
 }
