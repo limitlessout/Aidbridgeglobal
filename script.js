@@ -137,3 +137,33 @@ if (form) {
   });
 
 }
+// ANIMATION AU SCROLL
+
+const sections = document.querySelectorAll(".section");
+
+const revealSections = () => {
+
+  sections.forEach(section => {
+
+    const sectionTop =
+      section.getBoundingClientRect().top;
+
+    const trigger =
+      window.innerHeight - 100;
+
+    if(sectionTop < trigger){
+
+      section.classList.add("show");
+
+    }
+
+  });
+
+};
+
+window.addEventListener(
+  "scroll",
+  revealSections
+);
+
+revealSections();
