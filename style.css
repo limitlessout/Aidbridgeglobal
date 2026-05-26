@@ -566,3 +566,99 @@ footer{
   animation:heroLight 8s infinite alternate;
 
 }
+/* =========================
+   ANIMATIONS SAFE
+========================= */
+
+/* APPARITION DOUCE */
+
+.service-card,
+.contact-box,
+.about-card,
+.feature-box,
+.stat-box{
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+
+}
+
+/* HOVER PREMIUM */
+
+.service-card:hover,
+.contact-box:hover,
+.about-card:hover,
+.feature-box:hover,
+.stat-box:hover{
+
+  transform:translateY(-8px);
+
+  box-shadow:
+    0 10px 25px rgba(212,175,55,0.2);
+
+}
+
+/* BOUTON */
+
+.btn{
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+
+}
+
+.btn:hover{
+
+  transform:translateY(-3px);
+
+}
+
+/* WHATSAPP */
+
+.whatsapp-float{
+
+  animation:whatsappPulse 2s infinite;
+
+}
+
+@keyframes whatsappPulse{
+
+  0%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(1.08);
+  }
+
+  100%{
+    transform:scale(1);
+  }
+
+}
+
+/* LOGO */
+
+.logo img{
+
+  animation:logoFloat 4s ease-in-out infinite;
+
+}
+
+@keyframes logoFloat{
+
+  0%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-4px);
+  }
+
+  100%{
+    transform:translateY(0);
+  }
+
+}
