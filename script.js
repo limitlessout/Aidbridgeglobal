@@ -209,3 +209,29 @@ window.addEventListener(
 );
 
 revealOnScroll();
+// =========================
+// VIDEO HERO AUTOPLAY
+// =========================
+
+window.addEventListener("load", () => {
+
+  const video = document.querySelector(".hero-video video");
+
+  if(video){
+
+    video.muted = true;
+    video.autoplay = true;
+    video.loop = true;
+    video.playsInline = true;
+
+    const playPromise = video.play();
+
+    if(playPromise !== undefined){
+      playPromise.catch(() => {
+        console.log("Autoplay bloqué par le navigateur");
+      });
+    }
+
+  }
+
+});
