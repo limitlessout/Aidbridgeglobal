@@ -703,3 +703,8 @@ footer{
 .delay-4{
   transition-delay:0.8s;
 }
+.hero-video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
