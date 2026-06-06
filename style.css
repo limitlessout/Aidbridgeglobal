@@ -703,8 +703,14 @@ footer{
 .delay-4{
   transition-delay:0.8s;
 }
-.hero-video {
-  width: 100%;
-  height: auto;
-  display: block;
+.hero-video{
+  width:100%;
+  overflow:hidden;
+}
+
+.hero-video video{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:cover;
 }
