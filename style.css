@@ -86,24 +86,6 @@ nav a:hover{
 
 /* BACKGROUND HERO */
 
-.hero-background{
-  position:absolute;
-  inset:0;
-
-  background:
-    linear-gradient(
-      rgba(5,16,31,0.80),
-      rgba(5,16,31,0.88)
-    ),
-    url('assets/5fd55583-764a-4786-9a5a-6eed698a6c3c.jpeg');
-
-  background-size:55%;
-  background-repeat:no-repeat;
-  background-position:center;
-
-  z-index:-2;
-}
-
 /* EFFET LUMIÈRE */
 
 .hero::before{
@@ -740,6 +722,4 @@ footer{
   position:relative;
   z-index:10;
 }
-.hero-background{
-  display:none !important;
-}
+
