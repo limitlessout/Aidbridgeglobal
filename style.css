@@ -740,3 +740,6 @@ footer{
   position:relative;
   z-index:10;
 }
+.hero-background{
+  display:none !important;
+}
