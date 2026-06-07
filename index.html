@@ -25,11 +25,7 @@
 </head>
 
 <body>
-<div class="hero-video">
-  <video autoplay muted loop playsinline>
-    <source src="assets/presentation.MP4" type="video/mp4">
-  </video>
-</div>
+
   <!-- HEADER -->
 
   <header>
@@ -78,56 +74,42 @@
 
   <!-- HERO SECTION -->
 
-  <section class="hero" id="accueil">
+ <section class="hero" id="accueil">
 
-    <div class="hero-background"></div>
+  <!-- VIDEO BACKGROUND -->
+  <video class="hero-video-bg" autoplay muted loop playsinline>
+    <source src="assets/presentation.MP4" type="video/mp4">
+  </video>
 
-    <div class="hero-logo-bg"></div>
+  <!-- COUCHE SOMBRE -->
+  <div class="overlay"></div>
 
-    <div class="gold-particles">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+  <!-- CONTENU TEXTE -->
+  <div class="hero-content reveal active">
 
-    <div class="overlay"></div>
+    <h1 class="hero-title">
+      AG-AIDBRIDGE GLOBAL LTD
+    </h1>
 
-    <div class="hero-lights"></div>
+    <p class="hero-subtitle">
+      BRIDGING OPPORTUNITIES. BUILDING FUTURES.
+    </p>
 
-    <div class="hero-content reveal active">
+    <p class="hero-text">
+      Société internationale spécialisée dans le commerce,
+      le trading, l’import-export,
+      les solutions de voyage,
+      le tourisme international
+      et la consultance éducationnelle.
+    </p>
 
-      <h1 class="hero-title">
-        AG-AIDBRIDGE GLOBAL LTD
-      </h1>
+    <a href="#services" class="btn">
+      Explorer nos services
+    </a>
 
-      <p class="hero-subtitle">
+  </div>
 
-        BRIDGING OPPORTUNITIES. BUILDING FUTURES.
-
-      </p>
-
-      <p class="hero-text">
-
-        Société internationale spécialisée dans le commerce,
-        le trading, l’import-export,
-        les solutions de voyage,
-        le tourisme international
-        et la consultance éducationnelle.
-
-      </p>
-
-      <a href="#services" class="btn">
-
-        Explorer nos services
-
-      </a>
-
-    </div>
-
-  </section>
+</section>
 
   <!-- A PROPOS -->
 
