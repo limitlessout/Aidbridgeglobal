@@ -50,8 +50,10 @@ header.scrolled{
 
 .logo img{
   width:90px;
-  height:auto;
-  opacity:0.9;
+}
+
+header{
+  padding:8px 0;
 }
 
 /* NAVIGATION */
