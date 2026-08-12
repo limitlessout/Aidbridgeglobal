@@ -1,557 +1,370 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-  <title>AG-AIDBRIDGE GLOBAL LTD</title>
-
+  <title>AG-AIDBRIDGE GLOBAL LTD — Commerce, Import-Export, Voyages & Éducation</title>
   <meta name="description"
-    content="AG-AIDBRIDGE GLOBAL LTD est une société internationale spécialisée dans le commerce, l'import-export, les services de voyage, le tourisme et la consultance éducationnelle.">
+    content="AG-AIDBRIDGE GLOBAL LTD est une société internationale spécialisée dans le commerce, l'import-export, les solutions de voyage, le tourisme et la consultance éducationnelle. Présents au Ghana, en Malaisie et au Canada.">
 
   <link rel="stylesheet" href="style.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
-
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 </head>
-
 <body>
 
   <!-- HEADER -->
-
   <header>
-
     <div class="container nav-container">
 
-      <div class="logo">
+      <a href="#accueil" class="logo">
+        <img src="assets/5fd55583-764a-4786-9a5a-6eed698a6c3c.jpeg" alt="AG Aidbridge Global">
+        <span class="logo-word">AG&thinsp;·&thinsp;AIDBRIDGE</span>
+      </a>
 
-       <img src="assets/5fd55583-764a-4786-9a5a-6eed698a6c3c.jpeg" alt="AG Aidbridge Global">
-
-      </div>
-
-      <div class="menu-toggle" id="menu-toggle">
-
+      <div class="menu-toggle" id="menu-toggle" aria-label="Ouvrir le menu" role="button" tabindex="0">
         <i class="fas fa-bars"></i>
-
       </div>
 
       <nav id="navbar">
-
         <ul>
-
           <li><a href="#accueil">Accueil</a></li>
-
           <li><a href="#apropos">À propos</a></li>
-
           <li><a href="#services">Services</a></li>
-
           <li><a href="#importexport">Import & Export</a></li>
-
           <li><a href="#voyage">Voyages</a></li>
-
           <li><a href="#education">Éducation</a></li>
-
           <li><a href="#partenaires">Partenariats</a></li>
-
-          <li><a href="#contact">Contact</a></li>
-
+          <li><a href="#contact" class="nav-cta">Contact</a></li>
         </ul>
-
       </nav>
 
     </div>
-
   </header>
 
-  <!-- HERO SECTION -->
+  <!-- HERO -->
+  <section class="hero" id="accueil">
 
- <section class="hero" id="accueil">
+    <video class="hero-video-bg" autoplay muted loop playsinline>
+      <source src="assets/presentation.MP4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
 
-  <!-- VIDEO BACKGROUND -->
-  <video class="hero-video-bg" autoplay muted loop playsinline>
-    <source src="assets/presentation.MP4" type="video/mp4">
-  </video>
+    <!-- signature: bridge network motif -->
+    <svg class="bridge-net" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#D9B65C" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#D9B65C" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <ellipse class="lat" cx="600" cy="350" rx="520" ry="230"/>
+      <ellipse class="lat" cx="600" cy="350" rx="520" ry="120"/>
+      <ellipse class="lon" cx="600" cy="350" rx="230" ry="330"/>
+      <ellipse class="lon" cx="600" cy="350" rx="80" ry="330"/>
+      <line class="lon" x1="80" y1="350" x2="1120" y2="350"/>
 
-  <!-- COUCHE SOMBRE -->
-  <div class="overlay"></div>
+      <path class="route" d="M 300,470 Q 600,150 780,230" />
+      <path class="route" d="M 780,230 Q 900,320 990,300" />
+      <path class="route" d="M 300,470 Q 550,560 990,300" />
 
-  <!-- CONTENU TEXTE -->
-  <div class="hero-content reveal active">
+      <g class="node" transform="translate(300,470)">
+        <circle r="26" fill="url(#nodeGlow)"/>
+        <circle r="4.5" class="dot"/>
+        <text x="14" y="-14">ACCRA</text>
+      </g>
+      <g class="node" transform="translate(780,230)">
+        <circle r="26" fill="url(#nodeGlow)"/>
+        <circle r="4.5" class="dot"/>
+        <text x="14" y="-14">KUALA LUMPUR</text>
+      </g>
+      <g class="node" transform="translate(990,300)">
+        <circle r="26" fill="url(#nodeGlow)"/>
+        <circle r="4.5" class="dot"/>
+        <text x="14" y="-14">MONTRÉAL</text>
+      </g>
+    </svg>
 
-    <h1 class="hero-title">
-      AG-AIDBRIDGE GLOBAL LTD
-    </h1>
-
-    <p class="hero-subtitle">
-      BRIDGING OPPORTUNITIES. BUILDING FUTURES.
-    </p>
-
-    <p class="hero-text">
-      Société internationale spécialisée dans le commerce,
-      le trading, l’import-export,
-      les solutions de voyage,
-      le tourisme international
-      et la consultance éducationnelle.
-    </p>
-
-    <a href="#services" class="btn">
-      Explorer nos services
-    </a>
-
-  </div>
-
-</section>
+    <div class="hero-content reveal active">
+      <p class="hero-eyebrow">Ghana · Malaisie · Canada</p>
+      <h1 class="hero-title">AG-AIDBRIDGE<br>GLOBAL&nbsp;LTD</h1>
+      <p class="hero-subtitle">Bridging opportunities. Building futures.</p>
+      <p class="hero-text">
+        Une société internationale au service du commerce, de l'import-export,
+        des solutions de voyage, du tourisme et de la consultance éducationnelle —
+        présente sur trois continents.
+      </p>
+      <div class="hero-actions">
+        <a href="#services" class="btn btn-gold">Explorer nos services</a>
+        <a href="#contact" class="btn btn-ghost">Nous contacter</a>
+      </div>
+    </div>
+  </section>
 
   <!-- A PROPOS -->
-
   <section class="section" id="apropos">
-
     <div class="container">
 
-      <h2 class="reveal">À propos de notre entreprise</h2>
+      <p class="eyebrow reveal">À propos</p>
+      <h2 class="reveal">Un pont entre vos ambitions et le monde</h2>
 
       <div class="about-grid">
-
         <div class="reveal delay-1">
-
           <p>
-
-            AG-AIDBRIDGE GLOBAL LTD est une entreprise moderne
-            orientée vers les solutions internationales,
-            le développement des échanges commerciaux
-            et la création d’opportunités globales.
-
+            AG-AIDBRIDGE GLOBAL LTD est une entreprise moderne orientée vers les
+            solutions internationales, le développement des échanges commerciaux
+            et la création d'opportunités globales.
           </p>
-
           <p>
-
-            Notre mission est d’accompagner les particuliers,
-            entreprises et investisseurs dans leurs projets
-            commerciaux et professionnels à travers le monde.
-
+            Notre mission est d'accompagner les particuliers, entreprises et
+            investisseurs dans leurs projets commerciaux et professionnels à
+            travers le monde.
           </p>
-
           <p>
-
-            Grâce à notre expertise dans plusieurs secteurs,
-            nous proposons des services fiables,
-            professionnels et adaptés aux besoins internationaux.
-
+            Grâce à notre expertise dans plusieurs secteurs, nous proposons des
+            services fiables, professionnels et adaptés aux besoins internationaux.
           </p>
-
         </div>
 
         <div class="about-card reveal delay-2">
-
           <h3>Nos valeurs</h3>
-
           <ul>
-
-            <li>Professionnalisme</li>
-
-            <li>Fiabilité</li>
-
-            <li>Innovation</li>
-
-            <li>Développement International</li>
-
-            <li>Partenariats Durables</li>
-
+            <li><span>Professionnalisme</span></li>
+            <li><span>Fiabilité</span></li>
+            <li><span>Innovation</span></li>
+            <li><span>Développement international</span></li>
+            <li><span>Partenariats durables</span></li>
           </ul>
-
         </div>
-
       </div>
 
     </div>
-
   </section>
 
   <!-- SERVICES -->
-
   <section class="section dark-section" id="services">
-
     <div class="container">
 
-      <h2 class="reveal">Nos Services</h2>
+      <p class="eyebrow reveal">Ce que nous faisons</p>
+      <h2 class="reveal">Nos services</h2>
 
       <div class="services-grid">
 
         <div class="service-card reveal delay-1">
-
           <i class="fas fa-ship"></i>
-
           <h3>Commerce & Trading</h3>
-
-          <p>
-
-            Développement des activités commerciales,
-            trading international,
-            mise en relation fournisseurs et acheteurs,
-            accompagnement business.
-
-          </p>
-
+          <p>Développement des activités commerciales, trading international,
+             mise en relation fournisseurs et acheteurs, accompagnement business.</p>
         </div>
 
         <div class="service-card reveal delay-2">
-
           <i class="fas fa-globe"></i>
-
           <h3>Importation & Exportation</h3>
-
-          <p>
-
-            Import de marchandises générales,
-            export de produits,
-            gestion logistique,
-            accompagnement douanier et solutions internationales.
-
-          </p>
-
+          <p>Import de marchandises générales, export de produits, gestion
+             logistique, accompagnement douanier et solutions internationales.</p>
         </div>
 
         <div class="service-card reveal delay-3">
-
           <i class="fas fa-plane-departure"></i>
-
           <h3>Voyages & Tourisme</h3>
-
-          <p>
-
-            Assistance voyage,
-            réservations,
-            accompagnement touristique,
-            voyages d’affaires,
-            solutions internationales.
-
-          </p>
-
+          <p>Assistance voyage, réservations, accompagnement touristique,
+             voyages d'affaires, solutions internationales.</p>
         </div>
 
         <div class="service-card reveal delay-4">
-
           <i class="fas fa-graduation-cap"></i>
-
           <h3>Consultance Éducationnelle</h3>
-
-          <p>
-
-            Orientation académique,
-            accompagnement pour études à l’étranger,
-            assistance administrative et conseils éducatifs.
-
-          </p>
-
+          <p>Orientation académique, accompagnement pour études à l'étranger,
+             assistance administrative et conseils éducatifs.</p>
         </div>
 
       </div>
-
     </div>
-
   </section>
 
   <!-- IMPORT EXPORT -->
-
   <section class="section" id="importexport">
-
     <div class="container">
 
-      <h2 class="reveal">Importation & Exportation Internationale</h2>
-
-      <p class="reveal delay-1">
-
-        Nous accompagnons les entreprises
-        dans leurs activités d’import-export
-        à travers des solutions fiables et professionnelles.
-
-      </p>
-
-      <p class="reveal delay-2">
-
-        Notre société facilite les échanges commerciaux
-        entre plusieurs pays et marchés internationaux
-        grâce à un réseau solide de partenaires.
-
-      </p>
-
-      <div class="features">
-
-        <div class="feature-box reveal delay-1">
-          Importation de marchandises générales
+      <div class="split">
+        <div>
+          <p class="eyebrow reveal">Import & Export</p>
+          <h2 class="align-left reveal">Des échanges commerciaux sans friction</h2>
+          <p class="reveal delay-1">
+            Nous accompagnons les entreprises dans leurs activités d'import-export
+            à travers des solutions fiables et professionnelles.
+          </p>
+          <p class="reveal delay-2">
+            Notre société facilite les échanges commerciaux entre plusieurs pays
+            et marchés internationaux grâce à un réseau solide de partenaires.
+          </p>
         </div>
 
-        <div class="feature-box reveal delay-2">
-          Gestion logistique internationale
+        <div class="features">
+          <div class="feature-box reveal delay-1">
+            <i class="fas fa-box"></i>
+            <span>Importation de marchandises générales</span>
+          </div>
+          <div class="feature-box reveal delay-2">
+            <i class="fas fa-route"></i>
+            <span>Gestion logistique internationale</span>
+          </div>
+          <div class="feature-box reveal delay-3">
+            <i class="fas fa-handshake"></i>
+            <span>Coordination commerciale</span>
+          </div>
+          <div class="feature-box reveal delay-4">
+            <i class="fas fa-file-shield"></i>
+            <span>Assistance douanière</span>
+          </div>
         </div>
-
-        <div class="feature-box reveal delay-3">
-          Coordination commerciale
-        </div>
-
-        <div class="feature-box reveal delay-4">
-          Assistance douanière
-        </div>
-
       </div>
 
     </div>
-
   </section>
 
   <!-- VOYAGES -->
-
   <section class="section dark-section" id="voyage">
-
-    <div class="container">
-
-      <h2 class="reveal">Voyages & Services Touristiques</h2>
-
+    <div class="container narrow">
+      <p class="eyebrow reveal">Voyages & Tourisme</p>
+      <h2 class="reveal">Voyager l'esprit tranquille</h2>
       <p class="reveal delay-1">
-
-        Nous proposons des solutions adaptées
-        pour les voyages professionnels,
+        Nous proposons des solutions adaptées pour les voyages professionnels,
         touristiques et internationaux.
-
       </p>
-
       <p class="reveal delay-2">
-
-        Notre objectif est d’offrir
-        une expérience simple,
-        sécurisée et professionnelle
-        à nos clients.
-
+        Notre objectif est d'offrir une expérience simple, sécurisée et
+        professionnelle à nos clients.
       </p>
-
     </div>
-
   </section>
 
   <!-- EDUCATION -->
-
   <section class="section" id="education">
-
-    <div class="container">
-
-      <h2 class="reveal">Consultance Éducationnelle</h2>
-
+    <div class="container narrow">
+      <p class="eyebrow reveal">Éducation</p>
+      <h2 class="reveal">Consultance éducationnelle</h2>
       <p class="reveal delay-1">
-
-        Nous accompagnons les étudiants
-        et professionnels dans leurs projets académiques internationaux.
-
+        Nous accompagnons les étudiants et professionnels dans leurs projets
+        académiques internationaux.
       </p>
-
       <p class="reveal delay-2">
-
-        Nos services incluent
-        l’orientation,
-        les conseils stratégiques,
-        l’assistance administrative
-        et la préparation des démarches.
-
+        Nos services incluent l'orientation, les conseils stratégiques,
+        l'assistance administrative et la préparation des démarches.
       </p>
-
     </div>
-
   </section>
 
   <!-- PARTENAIRES -->
-
   <section class="section dark-section" id="partenaires">
-
-    <div class="container">
-
-      <h2 class="reveal">Partenariats & Collaboration</h2>
-
+    <div class="container narrow">
+      <p class="eyebrow reveal">Partenariats</p>
+      <h2 class="reveal">Grandir ensemble</h2>
       <p class="reveal delay-1">
-
-        AG-AIDBRIDGE GLOBAL LTD recherche continuellement
-        des partenaires stratégiques,
-        fournisseurs,
-        investisseurs et collaborateurs internationaux.
-
+        AG-AIDBRIDGE GLOBAL LTD recherche continuellement des partenaires
+        stratégiques, fournisseurs, investisseurs et collaborateurs internationaux.
       </p>
-
       <p class="reveal delay-2">
-
-        Nous croyons aux partenariats durables
-        fondés sur la confiance,
+        Nous croyons aux partenariats durables fondés sur la confiance,
         la croissance et la réussite mutuelle.
-
       </p>
-
     </div>
-
   </section>
 
   <!-- STATS -->
-
   <section class="section stats-section">
-
     <div class="container">
-
       <div class="stats-grid">
-
         <div class="stat-box reveal delay-1">
-
           <h3>15+</h3>
-
           <p>Partenaires internationaux</p>
-
         </div>
-
         <div class="stat-box reveal delay-2">
-
           <h3>10+</h3>
-
-          <p>Secteurs d’activités</p>
-
+          <p>Secteurs d'activités</p>
         </div>
-
         <div class="stat-box reveal delay-3">
-
           <h3>100%</h3>
-
           <p>Engagement professionnel</p>
-
         </div>
-
         <div class="stat-box reveal delay-4">
-
           <h3>Worldwide</h3>
-
           <p>Services internationaux</p>
-
         </div>
-
       </div>
-
     </div>
-
   </section>
 
   <!-- CONTACT -->
-
   <section class="section" id="contact">
-
     <div class="container">
 
+      <p class="eyebrow reveal">Contact</p>
       <h2 class="reveal">Contactez-nous</h2>
 
       <div class="contact-grid">
 
         <div class="contact-box reveal delay-1">
-
           <i class="fas fa-envelope"></i>
-
           <h3>Email</h3>
-
           <p>contact@aidbridgeglobal.com</p>
-
         </div>
 
         <div class="contact-box reveal delay-2">
-
           <i class="fas fa-phone"></i>
-
           <h3>Téléphone</h3>
-
-          <p>+60 11-2636 8075</p>
-
-          <p>+1 (581) 895-4194</p>
-
-          <p>+233 54 066 2346</p>
-
+          <p>+60 11-2636 8075 <span class="tag">Malaisie</span></p>
+          <p>+1 (581) 895-4194 <span class="tag">Canada</span></p>
+          <p>+233 54 066 2346 <span class="tag">Ghana</span></p>
         </div>
 
         <div class="contact-box reveal delay-3">
-
           <i class="fas fa-location-dot"></i>
-
           <h3>Adresse</h3>
-
-          <iframe
-          src="https://www.google.com/maps?q=Ghana&output=embed"
-          width="100%"
-          height="300"
-          style="border:0; border-radius:10px;"
-          allowfullscreen=""
-          loading="lazy">
-          </iframe>
-
+          <div class="map-frame">
+            <iframe
+              src="https://www.google.com/maps?q=Ghana&output=embed"
+              width="100%" height="220" style="border:0;"
+              allowfullscreen="" loading="lazy">
+            </iframe>
+          </div>
           <p>Ghana & Worldwide Operations</p>
-
         </div>
 
       </div>
-
     </div>
 
-    <form id="contact-form" class="contact-form reveal delay-4">
-
-      <input
-        type="text"
-        id="name"
-        placeholder="Votre nom"
-        required
-      >
-
-      <input
-        type="email"
-        id="email"
-        placeholder="Votre email"
-        required
-      >
-
-      <textarea
-        id="message"
-        placeholder="Votre message"
-        required
-      ></textarea>
-
-      <button type="submit" class="btn">
-        Envoyer
-      </button>
-
-      <p id="form-status"></p>
-
-    </form>
-
+    <div class="container narrow">
+      <form id="contact-form" class="contact-form reveal delay-4">
+        <div class="form-row">
+          <input type="text" id="name" placeholder="Votre nom" required>
+          <input type="email" id="email" placeholder="Votre email" required>
+        </div>
+        <textarea id="message" placeholder="Votre message" required></textarea>
+        <button type="submit" class="btn btn-gold">Envoyer</button>
+        <p id="form-status"></p>
+      </form>
+    </div>
   </section>
 
   <!-- FOOTER -->
-
   <footer>
-
-    <p>
-
-      © 2026 AG-AIDBRIDGE GLOBAL LTD —
-      Tous droits réservés
-
-    </p>
-
+    <div class="container footer-grid">
+      <span>© 2026 AG-AIDBRIDGE GLOBAL LTD — Tous droits réservés</span>
+      <span class="footer-tagline">Bridging opportunities. Building futures.</span>
+    </div>
   </footer>
 
   <script src="script.js"></script>
 
-  <a
-  href="https://wa.me/233540662346"
-  class="whatsapp-float"
-  target="_blank">
-
+  <a href="https://wa.me/233540662346" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
     <i class="fab fa-whatsapp"></i>
-
   </a>
 
 </body>
